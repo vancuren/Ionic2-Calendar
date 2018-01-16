@@ -132,19 +132,19 @@ export enum Step {
             {{view.dates[row*7+col].label}}
         </ng-template>
         <ng-template #monthviewDefaultEventDetailTemplate let-showEventDetail="showEventDetail" let-selectedDate="selectedDate" let-noEventsLabel="noEventsLabel">
-            <ion-list class="event-detail-container" has-bouncing="false" *ngIf="showEventDetail" overflow-scroll="false">
-                <ion-item *ngFor="let event of selectedDate?.events" (click)="eventSelected(event)">
+            <ion-card class="event-detail-container" has-bouncing="false" *ngIf="showEventDetail" overflow-scroll="false">
+                <ion-card-content *ngFor="let event of selectedDate?.events" (click)="eventSelected(event)">
                         <span *ngIf="!event.allDay" class="monthview-eventdetail-timecolumn">{{event.startTime|date: 'HH:mm'}}
                             -
                             {{event.endTime|date: 'HH:mm'}}
                         </span>
                     <span *ngIf="event.allDay" class="monthview-eventdetail-timecolumn">{{allDayLabel}}</span>
                     <span class="event-detail">  |  {{event.title}}</span>
-                </ion-item>
-                <ion-item *ngIf="selectedDate?.events.length==0">
+                </ion-card-content>
+                <ion-card-content *ngIf="selectedDate?.events.length==0">
                     <div class="no-events-label">{{noEventsLabel}}</div>
-                </ion-item>
-            </ion-list>
+                </ion-card-content>
+            </ion-card>
         </ng-template>
         <ng-template #defaultAllDayEventTemplate let-displayEvent="displayEvent">
             <div class="calendar-event-inner">{{displayEvent.event.title}}</div>
